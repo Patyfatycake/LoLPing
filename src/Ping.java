@@ -23,27 +23,27 @@ public class Ping {
 			String[] splits;
 			float pingTotal=0;
 			int loops=0;
-			try {
+			
+				
 				inputLine = in.readLine();
-				inputLine = in.readLine();
-				while ((inputLine != null) && (loops+1<maxPackages)) {
+				while ((inputLine != null) && (loops<maxPackages)) {
 				    if (inputLine.length() > 0) {
-				    	splits = inputLine.toString().split("=");
-				    	splitLine = splits[splits.length-1].replace("ms", "");
-				    	splitLine = splitLine.replace(" ", "");
-				    	System.out.println(loops+1);
-				    	pingTotal+=Float.valueOf(splitLine);
-				    	loops++;
+				    	try{
+					    	splits = inputLine.toString().split("=");
+					    	splitLine = splits[splits.length-1].replace("ms", "");
+					    	splitLine = splitLine.replace(" ", "");
+					        
+					    	pingTotal+= Float.valueOf(splitLine);
+					    	loops++;
+				    	}catch(Exception e){
+				    		e.printStackTrace();
+					    }
 				    }
 				    inputLine = in.readLine();
 				}
-				System.out.println("Ping: "+pingTotal/loops);
-				return pingTotal/loops;
-			} catch (IOException e) {
 				
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				return pingTotal/loops;
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
