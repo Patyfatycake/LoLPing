@@ -7,7 +7,7 @@ LoLPing is a simple GUI to check Ping delay (ms) to your favourie League of Lege
 
 ### How do I use LoLPing? ###
 
-* Go to [releases](https://github.com/mayuso/LoLPing/releases)
+* Go to [release](https://github.com/mayuso/LoLPing/releases)
 * Download the latest release (.jar File)
 * Execute it by double clicking it (You will need to have Java installed on your PC).
 * Select your favourite server and the number of packages to send (2 or 3 is usually the best option).
