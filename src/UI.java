@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class UI extends JFrame{
 
