@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -34,8 +35,9 @@ public class UI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(100,100);
 		this.setContentPane(mainPanel());
-		this.pack();
+		this.setTitle("LoLPing v0.1.0");
 		addListeners();
+		this.pack();
 		this.setVisible(true);
 	}
 
@@ -61,8 +63,10 @@ public class UI extends JFrame{
 		panel.setBorder(BorderFactory.createEmptyBorder(40, 20, 40, 20));
 		
 		serverList = new JComboBox<String>();
-		serverList.addItem("EUW    ");
-		
+		serverList.addItem("EUW        ");
+		serverList.addItem("NA         ");
+		serverList.addItem("EUNE(*)    ");
+		serverList.addItem("OCE(*)     ");
 		numberOfPackages = new JComboBox<String>();
 		numberOfPackages.addItem("1");
 		numberOfPackages.addItem("2");
@@ -90,19 +94,36 @@ public class UI extends JFrame{
 		});
 	}
 	private void start() {
+		boolean valid=true;;
 		String ip;
 		switch(serverList.getSelectedIndex()){
 		case 0:
-			ip= "185.40.65.1";
+			ip= "185.40.65.1"; //EUW
+			break;
+		case 1: 
+			ip="104.160.131.1"; //NA
+			break;
+		case 2:
+			ip= "31.186.224.42";//EUNE
+			valid=false;
+			break;
+		case 3:
+			ip="103.240.227.5"; //OCE
+			valid=false;
 			break;
 		default:
-				ip="null";
-				break;
+			ip="null";
+			valid=false;
+			break;
 		}
 		
 		Ping ping= new Ping();
 		
-		pingLabel.setText("Ping:  " + String.valueOf(ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1))));
-				
+		if(valid){
+			pingLabel.setText("Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): " + String.valueOf(ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1))));
+		}else{
+			JOptionPane.showMessageDialog(null, String.valueOf(serverList.getSelectedItem()).replace(" ", "").replace("(*)", "")+" is not available for the current LoLPing Version.");
+		}
+		this.pack();	
 	}
 }
