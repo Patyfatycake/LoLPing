@@ -45,7 +45,7 @@ public class Ping {
 			return pingTotal/loops;
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}  
 		return -1;
