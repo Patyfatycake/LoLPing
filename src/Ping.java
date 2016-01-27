@@ -35,8 +35,8 @@ public class Ping {
 					        
 					    	pingTotal+= Float.valueOf(splitLine);
 					    	loops++;
-				    	}catch(Exception e){
-				    		e.printStackTrace();
+				    	}catch(NumberFormatException e){
+				    		//e.printStackTrace();
 					    }
 				    }
 				    inputLine = in.readLine();

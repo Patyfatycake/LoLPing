@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -20,6 +22,7 @@ public class UI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	JButton start;
 	JComboBox<String> serverList, numberOfPackages;
+	JLabel pingLabel= new JLabel();
 	public UI(){
 		/*try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
@@ -38,7 +41,23 @@ public class UI extends JFrame{
 
 
 	private Container mainPanel() {
-		JPanel panel = new JPanel(new GridLayout(2,4));
+		JPanel panel = new JPanel(new GridLayout(1,2));
+		panel.add(leftPanel());
+		panel.add(rightPanel());
+		
+		
+		return panel;
+	}
+	private Component rightPanel() {
+		JPanel panel = new JPanel();
+		panel.setBorder(BorderFactory.createEmptyBorder(60, 20, 40, 20));
+		panel.add(pingLabel);
+		return panel;
+	}
+
+
+	private Component leftPanel() {
+		JPanel panel = new JPanel(new GridLayout(3,1));
 		panel.setBorder(BorderFactory.createEmptyBorder(40, 20, 40, 20));
 		
 		serverList = new JComboBox<String>();
@@ -58,24 +77,32 @@ public class UI extends JFrame{
 		panel.add(start);
 		return panel;
 	}
+
+
 	private void addListeners() {
 		
 		start.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				String ip;
-				switch(serverList.getSelectedIndex()){
-				case 0:
-					ip= "185.40.65.1";
-					break;
-				default:
-						ip="null";
-						break;
-				}
-				
-				Ping ping= new Ping();
-				
-				System.out.println("Ping: "+ ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1)));
+				start();
 			}
+
+			
 		});
+	}
+	private void start() {
+		String ip;
+		switch(serverList.getSelectedIndex()){
+		case 0:
+			ip= "185.40.65.1";
+			break;
+		default:
+				ip="null";
+				break;
+		}
+		
+		Ping ping= new Ping();
+		
+		pingLabel.setText("Ping:  " + String.valueOf(ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1))));
+				
 	}
 }
