@@ -3,7 +3,7 @@
 
 ### What is it? ###
 
-LoLPing is a simple GUI to check Ping delay (ms) to your favourie League of Legends server.
+LoLPing is a simple GUI to check Ping delay (ms) to your favourite League of Legends server.
 
 ### How do I use LoLPing? ###
 
