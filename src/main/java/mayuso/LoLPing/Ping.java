@@ -1,3 +1,4 @@
+package main.java.mayuso.LoLPing;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,26 +24,25 @@ public class Ping {
 			String[] splits;
 			float pingTotal=0;
 			int loops=0;
-			
 				
-				inputLine = in.readLine();
-				while ((inputLine != null) && (loops<maxPackages)) {
-				    if (inputLine.length() > 0) {
-				    	try{
-					    	splits = inputLine.toString().split("=");
-					    	splitLine = splits[splits.length-1].replace("ms", "");
-					    	splitLine = splitLine.replace(" ", "");
-					        
-					    	pingTotal+= Float.valueOf(splitLine);
-					    	loops++;
-				    	}catch(NumberFormatException e){
-				    		//e.printStackTrace();
-					    }
+			inputLine = in.readLine();
+			while ((inputLine != null) && (loops<maxPackages)) {
+			    if (inputLine.length() > 0) {
+			    	try{
+				    	splits = inputLine.toString().split("=");
+				    	splitLine = splits[splits.length-1].replace("ms", "");
+				    	splitLine = splitLine.replace(" ", "");
+				        
+				    	pingTotal+= Float.valueOf(splitLine);
+				    	loops++;
+			    	}catch(NumberFormatException e){
+			    		//e.printStackTrace();
 				    }
-				    inputLine = in.readLine();
-				}
+			    }
+			    inputLine = in.readLine();
+			}
 				
-				return pingTotal/loops;
+			return pingTotal/loops;
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

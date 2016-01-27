@@ -1,3 +1,4 @@
+package main.java.mayuso.LoLPing;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -12,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class UI extends JFrame{
 
@@ -23,19 +26,29 @@ public class UI extends JFrame{
 	JComboBox<String> serverList, numberOfPackages;
 	JLabel pingLabel= new JLabel();
 	public UI(){
-		/*try {
+		
+		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.smart.SmartLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e) {
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(100,100);
 		this.setContentPane(mainPanel());
 		this.setTitle("LoLPing v0.1.0");
-		addListeners();
 		this.pack();
+		addListeners();
 		this.setVisible(true);
 	}
 
@@ -44,7 +57,6 @@ public class UI extends JFrame{
 		JPanel panel = new JPanel(new GridLayout(1,2));
 		panel.add(leftPanel());
 		panel.add(rightPanel());
-		
 		
 		return panel;
 	}
@@ -58,6 +70,7 @@ public class UI extends JFrame{
 
 	private Component leftPanel() {
 		JPanel panel = new JPanel(new GridLayout(3,1));
+		
 		panel.setBorder(BorderFactory.createEmptyBorder(40, 20, 40, 20));
 		
 		serverList = new JComboBox<String>();
@@ -75,7 +88,6 @@ public class UI extends JFrame{
 		
 		panel.add(serverList);
 		panel.add(numberOfPackages);
-		
 		panel.add(start);
 		return panel;
 	}
@@ -87,8 +99,6 @@ public class UI extends JFrame{
 			public void actionPerformed(ActionEvent e){
 				start();
 			}
-
-			
 		});
 	}
 	private void start() {
@@ -114,9 +124,7 @@ public class UI extends JFrame{
 			valid=false;
 			break;
 		}
-		
 		Ping ping= new Ping();
-		
 		if(valid){
 			pingLabel.setText("Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): " + String.valueOf(ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1))));
 		}else{
