@@ -125,8 +125,19 @@ public class UI extends JFrame{
 			break;
 		}
 		Ping ping= new Ping();
+		float pingValue = ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1));
+		pingLabel.setText("<html>Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): "); 
 		if(valid){
-			pingLabel.setText("Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): " + String.valueOf(ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1))));
+			if(pingValue<25){
+				pingLabel.setText(pingLabel.getText() + "<font color='blue'>"+String.valueOf(pingValue)+"</font></html>");
+				
+			}else if(pingValue<75){
+				pingLabel.setText(pingLabel.getText() + "<font color='green'>"+String.valueOf(pingValue)+"</font></html>");
+			}else if(pingValue<100){
+				pingLabel.setText(pingLabel.getText() + "<font color='yellow'>"+String.valueOf(pingValue)+"</font></html>");
+			}else{
+				pingLabel.setText(pingLabel.getText() + "<font color='red'>"+String.valueOf(pingValue)+"</font></html>");
+			}
 		}else{
 			JOptionPane.showMessageDialog(null, String.valueOf(serverList.getSelectedItem()).replace(" ", "").replace("(*)", "")+" is not available for the current LoLPing Version.");
 		}
