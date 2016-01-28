@@ -72,8 +72,10 @@ public class UI extends JFrame{
 		serverList = new JComboBox<String>();
 		serverList.addItem("EUW        ");
 		serverList.addItem("NA         ");
-		serverList.addItem("EUNE(*)    ");
+		serverList.addItem("EUNE       ");
 		serverList.addItem("OCE(*)     ");
+		serverList.addItem("BR         ");	
+		
 		numberOfPackages = new JComboBox<String>();
 		numberOfPackages.addItem("1");
 		numberOfPackages.addItem("2");
@@ -105,16 +107,19 @@ public class UI extends JFrame{
 			ip= "riot.de"; //EUW
 			break;
 		case 1: 
-			ip="104.160.131.1"; //NA
+			ip="riot.us"; //NA
 			break;
 		case 2:
 			ip= "riot.pl";//EUNE
-			valid=false;
 			break;
 		case 3:
 			ip="103.240.227.5"; //OCE
 			valid=false;
 			break;
+		case 4:
+			ip="8.23.24.100"; //BR
+			break;
+			
 		default:
 			ip="null";
 			valid=false;
@@ -126,7 +131,6 @@ public class UI extends JFrame{
 		if(valid){
 			if(pingValue<25){
 				pingLabel.setText(pingLabel.getText() + "<font color='blue'>"+String.valueOf(pingValue)+"</font></html>");
-				
 			}else if(pingValue<75){
 				pingLabel.setText(pingLabel.getText() + "<font color='green'>"+String.valueOf(pingValue)+"</font></html>");
 			}else if(pingValue<100){
