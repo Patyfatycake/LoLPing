@@ -42,7 +42,7 @@ public class UI extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(100,100);
 		this.setContentPane(mainPanel());
-		this.setTitle("LoLPing v0.1.0");
+		this.setTitle("LoLPing v0.1.1");
 		this.pack();
 		addListeners();
 		this.setVisible(true);
@@ -102,13 +102,13 @@ public class UI extends JFrame{
 		String ip;
 		switch(serverList.getSelectedIndex()){
 		case 0:
-			ip= "185.40.65.1"; //EUW
+			ip= "riot.de"; //EUW
 			break;
 		case 1: 
 			ip="104.160.131.1"; //NA
 			break;
 		case 2:
-			ip= "31.186.224.42";//EUNE
+			ip= "riot.pl";//EUNE
 			valid=false;
 			break;
 		case 3:
