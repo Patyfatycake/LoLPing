@@ -137,9 +137,10 @@ public class UI extends JFrame{
 			break;
 		}
 		Ping ping= new Ping();
-		float pingValue = ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1));
-		pingLabel.setText("<html>Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): "); 
 		if(valid){
+			float pingValue = ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1));
+			pingLabel.setText("<html>Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): "); 
+			
 			if(pingValue<=30){
 				pingLabel.setText(pingLabel.getText() + "<font color='blue'>"+String.valueOf(pingValue)+"</font></html>");
 			}else if(pingValue<=75){
