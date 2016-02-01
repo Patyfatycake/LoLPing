@@ -27,6 +27,7 @@ public class Ping {
 				
 			inputLine = in.readLine();
 			while ((inputLine != null) && (loops<maxPackages)) {
+				inputLine = in.readLine();
 			    if (inputLine.length() > 0) {
 			    	try{
 				    	splits = inputLine.toString().split("=");
@@ -40,7 +41,7 @@ public class Ping {
 				    }
 			    }
 			    loops++;
-			    inputLine = in.readLine();
+			    
 			}
 				
 			return pingTotal/loops;

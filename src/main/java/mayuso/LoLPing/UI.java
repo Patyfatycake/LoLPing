@@ -79,8 +79,8 @@ public class UI extends JFrame{
 		serverList.addItem("EUNE       ");
 		serverList.addItem("OCE(*)     ");
 		serverList.addItem("BR         ");
-		serverList.addItem("LAN        ");	
-		serverList.addItem("LAS        ");
+		serverList.addItem("LAN(*)        ");	
+		serverList.addItem("LAS(*)        ");
 		
 		numberOfPackages = new JComboBox<String>();
 		numberOfPackages.addItem("1");
@@ -127,9 +127,11 @@ public class UI extends JFrame{
 			break;		
 		case 5:
 			ip="66.151.33.33"; //LAN
+			valid=false;
 			break;
 		case 6:
 			ip="200.73.71.100"; //LAS
+			valid=false;
 			break;
 		default:
 			ip="null";
