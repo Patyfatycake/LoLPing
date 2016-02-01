@@ -34,11 +34,12 @@ public class Ping {
 				    	splitLine = splitLine.replace(" ", "");
 				        
 				    	pingTotal+= Float.valueOf(splitLine);
-				    	loops++;
+				    	
 			    	}catch(NumberFormatException e){
 			    		//e.printStackTrace();
 				    }
 			    }
+			    loops++;
 			    inputLine = in.readLine();
 			}
 				
@@ -47,7 +48,8 @@ public class Ping {
 		} catch (IOException e) {
 			
 			e.printStackTrace();
+			return -1;
 		}  
-		return -1;
+		
 	}
 }

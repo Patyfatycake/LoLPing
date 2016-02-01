@@ -69,12 +69,18 @@ public class UI extends JFrame{
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(40, 20, 40, 20));
 		
+		
+
+			
+		
 		serverList = new JComboBox<String>();
 		serverList.addItem("EUW        ");
 		serverList.addItem("NA         ");
 		serverList.addItem("EUNE       ");
 		serverList.addItem("OCE(*)     ");
-		serverList.addItem("BR         ");	
+		serverList.addItem("BR         ");
+		serverList.addItem("LAN        ");	
+		serverList.addItem("LAS        ");
 		
 		numberOfPackages = new JComboBox<String>();
 		numberOfPackages.addItem("1");
@@ -118,8 +124,13 @@ public class UI extends JFrame{
 			break;
 		case 4:
 			ip="8.23.24.100"; //BR
+			break;		
+		case 5:
+			ip="66.151.33.33"; //LAN
 			break;
-			
+		case 6:
+			ip="200.73.71.100"; //LAS
+			break;
 		default:
 			ip="null";
 			valid=false;
