@@ -23,7 +23,7 @@ public class UI extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	JButton start;
-	JComboBox<String> serverList, numberOfPackages;
+	JComboBox<String> serverList;
 	JLabel pingLabel= new JLabel();
 	public UI(){
 		
@@ -82,16 +82,11 @@ public class UI extends JFrame{
 		serverList.addItem("LAN(*)        ");	
 		serverList.addItem("LAS(*)        ");
 		
-		numberOfPackages = new JComboBox<String>();
-		numberOfPackages.addItem("1");
-		numberOfPackages.addItem("2");
-		numberOfPackages.addItem("3");
-		numberOfPackages.addItem("4");
+		
 		
 		start = new JButton("   START  ");
 		
 		panel.add(serverList);
-		panel.add(numberOfPackages);
 		panel.add(start);
 		return panel;
 	}
@@ -140,7 +135,7 @@ public class UI extends JFrame{
 		}
 		Ping ping= new Ping();
 		if(valid){
-			float pingValue = ping.getPing(ip, (numberOfPackages.getSelectedIndex()+1));
+			float pingValue = ping.getPing(ip, 3);
 			pingLabel.setText("<html>Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): "); 
 			
 			if(pingValue<=30){
