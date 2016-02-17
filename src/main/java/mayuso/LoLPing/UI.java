@@ -77,10 +77,10 @@ public class UI extends JFrame{
 		serverList.addItem("EUW        ");
 		serverList.addItem("NA         ");
 		serverList.addItem("EUNE       ");
-		serverList.addItem("OCE(*)     ");
+		//serverList.addItem("OCE(*)     ");
 		serverList.addItem("BR         ");
-		serverList.addItem("LAN(*)        ");	
-		serverList.addItem("LAS(*)        ");
+		//serverList.addItem("LAN(*)        ");	
+		//serverList.addItem("LAS(*)        ");
 		
 		
 		
@@ -101,43 +101,39 @@ public class UI extends JFrame{
 		});
 	}
 	private void start() {
-		boolean valid=true;;
-		String ip;
-		switch(serverList.getSelectedIndex()){
-		case 0:
-			ip= "riot.de"; //EUW
+		boolean valid=true;
+		String ip = null;
+		switch(serverList.getSelectedItem().toString().replace(" ", "")){
+		case "EUW":
+			ip= "riot.de";
 			break;
-		case 1: 
-			ip="riot.us"; //NA
+		case "NA": 
+			ip="riot.us";
 			break;
-		case 2:
-			ip= "riot.pl";//EUNE
+		case "EUNE":
+			ip= "riot.pl";
 			break;
-		case 3:
-			ip="103.240.227.5"; //OCE
+		/*case "OCE":
+			ip="103.240.227.5"; 
 			valid=false;
-			break;
-		case 4:
-			ip="8.23.24.100"; //BR
+			break;*/
+		case "BR":
+			ip="8.23.24.100"; 
 			break;		
-		case 5:
-			ip="66.151.33.33"; //LAN
+		/*case "LAN":
+			ip="66.151.33.33"; 
 			valid=false;
-			break;
-		case 6:
+			break;*/
+		/*case "LAS":
 			ip="200.73.71.100"; //LAS
 			valid=false;
-			break;
-		default:
-			ip="null";
-			valid=false;
-			break;
+			break;*/
 		}
 		Ping ping= new Ping();
 		if(valid){
 			float pingValue = ping.getPing(ip, 3);
 			pingLabel.setText("<html>Ping(" + String.valueOf(serverList.getSelectedItem()).replace(" ", "")+ "): "); 
-			
+	
 			if(pingValue<=30){
 				pingLabel.setText(pingLabel.getText() + "<font color='blue'>"+String.valueOf(pingValue)+"</font></html>");
 			}else if(pingValue<=75){
