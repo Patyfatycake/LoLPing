@@ -43,6 +43,8 @@ public class Ping {
 			    loops++;
 			    
 			}
+			if(pingTotal==0) pingTotal=-1;
+			if(loops==0) loops=1;
 			return pingTotal/loops;
 			
 		} catch (IOException e) {
