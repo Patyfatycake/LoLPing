@@ -1,4 +1,4 @@
-package test.java.mayuso.LoLPing;
+package mayuso.LoLPing;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

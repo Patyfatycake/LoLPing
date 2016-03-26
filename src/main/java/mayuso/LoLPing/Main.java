@@ -1,4 +1,4 @@
-package main.java.mayuso.LoLPing;
+package mayuso.LoLPing;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
